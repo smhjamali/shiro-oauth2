@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>登录并授权</title>
+    <style>.error{color:red;}</style>
+</head>
+<body>
+
+<div>使用你的<strong>小贷</strong>帐号访问 [<span th:text="${client.clientName}"/>]</div>
+<div class="error" th:text="${error}"></div>
+
+<form action="" method="post">
+    用户名：<input type="text" name="username" value="" /><br/>
+    密码：<input type="password" name="password" /><br/>
+    <input type="submit" value="登录并授权" />
+</form>
+
+</body>
+</html>

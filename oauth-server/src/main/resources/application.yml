@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: oauthserver
+  datasource:
+    url: jdbc:mysql://192.168.99.100:3306/oauth?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 111111
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat,wall
+    maxActive: 20
+    initialSize: 5
+    minIdle: 3
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    validationQuery: select 'x'
+
+mybatis:
+    type-aliases-package: com.sinochem.oauthserver.entity
+    mapper-locations: classpath:mapper/*.xml
+
+mapper:
+    mappers:
+        - com.sinochem.oauthserver.util.BaseMapper
+    not-empty: false
+    identity: MYSQL
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+logging:
+  level:
+    org.springframework: WARN
+    com.tcshop: DEBUG
+#debug: true
